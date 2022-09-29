@@ -1,0 +1,86 @@
+// user 1
+POST http://localhost:5000/auth/signup 
+content-type: application/json
+
+
+{
+    "user_name":"inirah",
+    "password":"ini",
+    "email":"harini123424.gk@gmail.com"
+}
+###
+POST http://localhost:5000/auth/verifyotp
+content-type: application/json
+
+{
+    "user_id":3,
+    "otp":"827244"
+}
+###
+
+//user 2
+POST http://localhost:5000/auth/signup
+content-type: application/json
+
+
+{
+    "user_name":"hari",
+    "password":"har",
+    "email":"harini123424.gk@gmail.com"
+}
+
+###
+
+// user 3
+POST http://localhost:5000/auth/signup
+content-type: application/json
+
+
+{
+    "user_name":"inira",
+    "password":"ra",
+    "email":"harini123424.gk@gmail.com"
+}
+###
+//login
+POST http://localhost:5000/auth/login
+content-type: application/json
+
+{
+    "email":"harini123424.gk@gmail.com",
+    "password":"3"
+}
+
+###
+// group
+POST http://localhost:5000/group/new
+content-type: application/json
+
+{
+    "group_name":"Demo",
+    "user_ls":[
+        {"user_name":"inirah",
+        "email":"harini123424.gk@gmail.com"
+        },
+        {"user_name":"inira",
+        "email":"harini123424.gk@gmail.com"
+        },
+        {"user_name":"har",
+        "email":"harini123424.gk@gmail.com"
+        }
+    ],
+    "type":"group",
+    "simplify":false
+
+}
+###
+http://localhost:5000/auth//account/settings/currconvert
+content-type: application/json
+
+{
+    "from_currency":"USD",
+    "to_currency":"INR",
+    "total":40,
+    "owe":15,
+    "owed":25
+}

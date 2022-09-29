@@ -1,0 +1,134 @@
+CREATE TABLE "user" (
+  "user_id" int PRIMARY KEY,
+  "pro_account" boolean,
+  "full_name" varchar,
+  "email_address" varchar,
+  "phone_number" int,
+  "password" varchar
+);
+
+CREATE TABLE "account_details" (
+  "user_id" int,
+  "total_balance" int,
+  "you_owe" int,
+  "you_owed" int,
+  "default_currency" varchar,
+  "timezone" varchar,
+  "language" varchar,
+  "google_connect" boolean
+);
+
+CREATE TABLE "notify" (
+  "user_id" int,
+  "add_to_group" int,
+  "add_as_friend" int,
+  "expense_added" int,
+  "expense_deteted" int,
+  "expense_due" boolean,
+  "pays_me" boolean,
+  "monthly_summary" boolean,
+  "news_updates" boolean
+);
+
+CREATE TABLE "blacklist" (
+  "user_id" int,
+  "black_listed_id" int
+);
+
+CREATE TABLE "login_devices" (
+  "user_id" int,
+  "deviceid" varchar,
+  "time" timestamp,
+  "login" boolean
+);
+
+CREATE TABLE "group" (
+  "group_id" int PRIMARY KEY,
+  "user_id" int,
+  "group_name" varchar
+);
+
+CREATE TABLE "expense" (
+  "user_id" int,
+  "expense_id" int PRIMARY KEY,
+  "group_id" varchar,
+  "name" varchar,
+  "amount" int,
+  "date_" date DEFAULT (now()),
+  "repeat" int,
+  "reminder" int,
+  "img" varchar,
+  "no_group" boolean
+);
+
+CREATE TABLE "split" (
+  "expense_id" int,
+  "split" int PRIMARY KEY,
+  "user_id" int,
+  "member_id" int,
+  "amount" int
+);
+
+CREATE TABLE "settle_cash" (
+  "user_id" int,
+  "member_id" int,
+  "amount" int,
+  "date_" date DEFAULT (now()),
+  "img" varchar,
+  "no_group" boolean
+);
+
+CREATE TABLE "recent_activity" (
+  "id" int PRIMARY KEY,
+  "date_" date,
+  "user_id" int,
+  "amount" int,
+  "group_id" varchar
+);
+
+CREATE TABLE "knowledge_base_faq" (
+  "id" int PRIMARY KEY,
+  "topic" varchar,
+  "question" varchar,
+  "answer" varchar
+);
+
+CREATE TABLE "splitwise_team_about" (
+  "id" int PRIMARY KEY,
+  "name" varchar,
+  "img" varchar,
+  "content" varchar
+);
+
+CREATE TABLE "recent_visits" (
+  "user_id" int,
+  "date_time" date,
+  "device" varchar,
+  "loction" varchar,
+  "user_agent" varchar,
+  "ip_add" varchar
+);
+
+ALTER TABLE "notify" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "blacklist" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "login_devices" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "expense" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "account_details" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "recent_activity" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "group" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "recent_visits" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "split" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "split" ADD FOREIGN KEY ("member_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "settle_cash" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("user_id");
+
+ALTER TABLE "settle_cash" ADD FOREIGN KEY ("member_id") REFERENCES "user" ("user_id");
