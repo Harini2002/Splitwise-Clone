@@ -1,25 +1,21 @@
+import { DataTypes } from 'sequelize';
+
 export default (sequelize, Sequelize) => {
     return sequelize.define(
-      "Recent_activity",
+      "Sub_category",
       {
-        id: {
+        sub_category_id:{
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        user_id: {
+        category_id:{
             type: Sequelize.INTEGER,
         },
-        date: {
-            type: Sequelize.DATE, 
+        sub_category_name:{
+            type: Sequelize.STRING,
         },
-        amount: {
-            type: Sequelize.INTEGER,
-        },
-        group_id: {
-            type: Sequelize.INTEGER,
-        },
-      
+        
       },
       { timestamps: true }
     );

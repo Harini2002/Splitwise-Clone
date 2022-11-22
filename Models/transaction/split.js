@@ -17,7 +17,7 @@ export default (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
         },
         amount: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.FLOAT
           },
 
         

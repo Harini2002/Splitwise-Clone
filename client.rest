@@ -4,17 +4,18 @@ content-type: application/json
 
 
 {
-    "user_name":"inirah",
-    "password":"ini",
-    "email":"harini123424.gk@gmail.com"
+    "user_name":"harini_30",
+    "password":"Fderb@1234",
+    "email":"harighj.gk@gmail.com"
 }
 ###
+//verify otp
 POST http://localhost:5000/auth/verifyotp
 content-type: application/json
 
 {
-    "user_id":3,
-    "otp":"827244"
+    "user_id":2,
+    "otp":"647242"
 }
 ###
 
@@ -24,9 +25,9 @@ content-type: application/json
 
 
 {
-    "user_name":"hari",
-    "password":"har",
-    "email":"harini123424.gk@gmail.com"
+    "user_name":"harini",
+    "password":"Apple@2341",
+    "email":"harinikrishna1230@gmail.com"
 }
 
 ###
@@ -37,18 +38,54 @@ content-type: application/json
 
 
 {
-    "user_name":"inira",
-    "password":"ra",
+    "user_name":"harinikrishana",
+    "password":"Apple@2568",
+    "email":"harini.g@codingmart.com"
+}
+
+###
+
+// resend otp
+POST http://localhost:5000/auth/resentotp
+content-type: application/json
+
+
+{
+    "resend":true,
     "email":"harini123424.gk@gmail.com"
 }
+
+###
+
+//user 4
+POST http://localhost:5000/auth/signup
+content-type: application/json
+
+
+{
+    "user_name":"inira",
+    "password":"harini@12",
+    "email":"harini123424.gk@gmail.com"
+}
+
 ###
 //login
 POST http://localhost:5000/auth/login
+
+
+{
+    "deviceid":"589658 window",
+    "email":"harini123424.gk@gmail.com",
+    "password":"Apple@1234"
+}
+
+###
+//forgot password
+POST http://localhost:5000/auth/forgotpassword
 content-type: application/json
 
 {
-    "email":"harini123424.gk@gmail.com",
-    "password":"3"
+    "email":"harini123424.gk@gmail.com"
 }
 
 ###
@@ -57,16 +94,16 @@ POST http://localhost:5000/group/new
 content-type: application/json
 
 {
-    "group_name":"Demo",
+    "group_name":"Demo1",
     "user_ls":[
-        {"user_name":"inirah",
-        "email":"harini123424.gk@gmail.com"
+        {
+        "email":"harini.123424.gk@gmail.com"
         },
-        {"user_name":"inira",
-        "email":"harini123424.gk@gmail.com"
+        {
+        "email":"harinikrishna1230@gmail.com"
         },
-        {"user_name":"har",
-        "email":"harini123424.gk@gmail.com"
+        {
+        "email":"harini.g@codingmart.com"
         }
     ],
     "type":"group",
@@ -74,13 +111,99 @@ content-type: application/json
 
 }
 ###
-http://localhost:5000/auth//account/settings/currconvert
+// currency converter
+POST http://localhost:5000/auth//account/settings/currconvert
 content-type: application/json
 
 {
     "from_currency":"USD",
     "to_currency":"INR",
-    "total":40,
-    "owe":15,
-    "owed":25
+    "user_id":1
 }
+
+###
+// create group expense
+POST http://localhost:5000/group/expense/create
+content-type: application/json
+
+{
+    "user_id":1,
+    "group_id":1,
+    "expense_name":"expense7",
+    "amount":200,
+    "split_type":0,
+    "no_group":true,
+    "reimbursement":false
+
+}
+
+###
+// 
+POST http://localhost:5000/expense/create
+content-type: application/json
+
+{
+    "user_id":1,
+    "type":0,
+    "split":0,
+    "to_id":2,
+    "expense_name":"exp1",
+    "amount":40,
+    "no_group":true
+
+}
+###
+POST http://localhost:5000/group/expense/delete
+content-type: application/json
+
+{
+    "group_id":1,
+    "expense_id":1,
+}
+
+###
+POST http://localhost:5000/api/v3.0/blocked_users
+content-type: application/json
+
+{
+    "user_id":1,
+    " black_listed_id":5,
+}
+
+###
+POST http://localhost:5000/settle
+content-type: application/json
+
+{
+    "user_id":1,
+    "to_id":2,
+    "amount":40,
+    "no_group":true
+
+}
+###
+POST http://localhost:5000/auth/account/settings/notify
+Content-Type: application/json
+
+{
+    "user_id":1,
+    "add_to_group":0,
+    "add_a_friend":1,
+    "expense_added":1,
+    "expense_detected":true,
+    "expense_due":false,
+    "pays_me":false,
+    "monthly_summary":false,
+    "news_updates":false
+}
+
+
+###
+POST http://localhost:5000/expense/getepense
+Content-Type: :application/json
+
+{
+    "group_id":
+}
+
+###

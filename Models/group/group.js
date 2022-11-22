@@ -2,6 +2,9 @@ export default (sequelize, Sequelize) => {
     return sequelize.define(
       "Group",
       {
+        created_by:{
+          type:Sequelize.INTEGER
+       },
         group_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,

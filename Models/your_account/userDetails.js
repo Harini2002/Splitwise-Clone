@@ -18,10 +18,12 @@ export default (sequelize, Sequelize) => {
         user_name: {
           type: Sequelize.STRING,
           allowNull: false,
-          unique: true,
+         
         },
-        verified:{
+        newuser:{
           type:Sequelize.BOOLEAN,
+          defaultValue:true,
+          
         }
       },
       { timestamps: true }

@@ -1,41 +1,31 @@
 export default (sequelize, Sequelize) => {
     return sequelize.define(
-      "Expense",
+      "Comments",
       {
-        expense_id: {
+      
+        parent_id: {
             type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
+        },
+        type:{
+          type: Sequelize.INTEGER,
         },
         user_id: {
           type: Sequelize.INTEGER,
         },
         group_id: {
             type: Sequelize.INTEGER,
-          },
-        expense_name: {
-          type: Sequelize.STRING,
-        },
-        amount: {
-            type: Sequelize.INTEGER,
+            defaultValue:null
           },
         date_time: {
             type: Sequelize.DATE, 
             defaultValue: Sequelize.NOW 
         },
-        repeat: {
-            type: Sequelize.INTEGER,
-        },
-        reminder: {
-            type: Sequelize.INTEGER,
-          },
-        img: {
-            type: Sequelize.STRING,
-        },
         no_group: {
             type: Sequelize.BOOLEAN,
+            defaultValue:false
+
         },
-        
+    
       },
       { timestamps: true }
     );

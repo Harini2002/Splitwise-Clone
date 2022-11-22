@@ -6,13 +6,16 @@ export default (sequelize, Sequelize) => {
           type: Sequelize.INTEGER,
         },
         total_balance: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.FLOAT,
+            defaultValue:0.00
         },
         you_owe: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.FLOAT,
+            defaultValue:0.00
         },
         you_owed: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.FLOAT,
+            defaultValue:0.00
         },
       },
       { timestamps: true }

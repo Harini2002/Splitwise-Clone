@@ -2,7 +2,7 @@
   "name": "splitwise",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,7 +16,9 @@
     "cors": "^2.8.5",
     "currency-converter-lt": "^1.3.1",
     "dotenv": "^16.0.2",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "json2csv": "^5.0.7",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^3.2.10",
     "nodemailer": "^6.7.8",
@@ -24,6 +26,10 @@
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.23.1",
-    "sequelize-auto": "^0.8.8"
+    "sequelize-auto": "^0.8.8",
+    "stripe": "^10.14.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0"
   }
 }

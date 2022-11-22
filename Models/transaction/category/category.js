@@ -1,14 +1,17 @@
 export default (sequelize, Sequelize) => {
     return sequelize.define(
-      "Black_list",
+      "Category",
       {
-        user_id: {
-          type: Sequelize.INTEGER,
+      
+        category_id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
         },
-        black_listed_id: {
+        category_name:{
           type: Sequelize.STRING,
-          allowNull: false,
         },
+    
       },
       { timestamps: true }
     );

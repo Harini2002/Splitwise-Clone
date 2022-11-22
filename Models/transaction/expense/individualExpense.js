@@ -1,33 +1,42 @@
 export default (sequelize, Sequelize) => {
     return sequelize.define(
-      "Settle_cash",
+      "Individual_expense",
       {
         created_by:{
           type:Sequelize.INTEGER
        },
-        settle_id:{
-          type: Sequelize.INTEGER,
+        expense_id: {
+            type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        user_id: {
+        from_user_id: {
+          type: Sequelize.INTEGER,
+        },
+        to_user_id: {
             type: Sequelize.INTEGER,
           },
-        member_id: {
-            type: Sequelize.INTEGER,
-        },
-        group_id: {
-            type: Sequelize.INTEGER,
+        expense_name: {
+          type: Sequelize.STRING,
         },
         amount: {
-            type: Sequelize.FLOAT,
+            type: Sequelize.INTEGER,
           },
         date_time: {
             type: Sequelize.DATE, 
             defaultValue: Sequelize.NOW 
         },
+        repeat: {
+            type: Sequelize.INTEGER,
+        },
+        reminder: {
+            type: Sequelize.INTEGER,
+          },
         img: {
             type: Sequelize.STRING,
+        },
+        no_group: {
+            type: Sequelize.BOOLEAN,
         },
         
       },

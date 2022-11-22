@@ -10,6 +10,8 @@ export default (sequelize, Sequelize) => {
           },
         created_at:{
            type:Sequelize.DATE,
+           allowNull: false,
+           defaultValue: sequelize.fn('now')
         },
         expired_at:{
            type:Sequelize.DATE,
