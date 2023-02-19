@@ -94,18 +94,9 @@ POST http://localhost:5000/group/new
 content-type: application/json
 
 {
-    "group_name":"Demo1",
-    "user_ls":[
-        {
-        "email":"harini.123424.gk@gmail.com"
-        },
-        {
-        "email":"harinikrishna1230@gmail.com"
-        },
-        {
-        "email":"harini.g@codingmart.com"
-        }
-    ],
+    "group_name":"Billianera",
+    "created_by":1,
+   
     "type":"group",
     "simplify":false
 
@@ -200,10 +191,24 @@ Content-Type: application/json
 
 ###
 POST http://localhost:5000/expense/getepense
-Content-Type: :application/json
+Content-Type: application/json
 
 {
-    "group_id":
+    "group_id":1
 }
 
 ###
+POST http://localhost:5000/group/getgroups
+Content-Type: application/json
+
+{
+    "user_id":1
+}
+###
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+    "name":"Harini",
+    "email":"harini123424.gk@gmail.com"
+}

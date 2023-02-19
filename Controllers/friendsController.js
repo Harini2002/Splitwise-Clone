@@ -5,6 +5,40 @@ import { sendMail } from "./mailController.js";
 const Friends=db.friends;
 const User=db.user_details;
 
+// const getFriend=async(req,res)=>{
+//     try {
+//         const user_id=req.body.user_id;
+//         const friendlist=await Friends.findAll({
+//             where:{
+//                 created_by:req.body.user_id
+//             },
+//             attributes: ['friend_id'], 
+//         });
+
+//         const friendname=friendlist.map(async (friend)=>{
+//             return await User.findOne({
+//                 where:{
+//                     user_id:friend.friend_id
+//                 },
+//                 attributes:['user_name']
+//             })
+//         })
+        
+//         res.json({
+//             status:"200",
+//             grouplist:friendname,
+//             message:"executed"
+//         })
+
+//     } catch (error) {
+//         res.json({
+//             status:500,
+//             message:error.message
+//         })
+        
+//     }
+// }
+
 const createFriend=async (req,res)=>{
     try {
         
@@ -72,4 +106,4 @@ const createFriend=async (req,res)=>{
     }
 }
 
-export{createFriend};
+export{createFriend,getFriend};

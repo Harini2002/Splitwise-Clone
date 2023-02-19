@@ -9,6 +9,13 @@ const Group=db.group
 const User=db.user_details
 const Expense_split=db.expense_split;
 
+// const getExpense=async(res,req)=>{
+//   try {
+   
+//   } catch (error) {
+   
+//   }
+// }
 const createExpense=async(req,res)=>{
    console.log("inside createExpense")
    const expenseType =req.body.type;

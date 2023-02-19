@@ -5,7 +5,7 @@ export default (sequelize, Sequelize) => {
         user_id: {
           type: Sequelize.INTEGER,
         },
-        friend_email: {
+        friend_id: {
           type: Sequelize.INTEGER,
          
         },

@@ -60,7 +60,6 @@ db_connect();
 
 
 const db={}
-
 db.Sequelize=Sequelize;
 db.sequelize=sequelize;
 

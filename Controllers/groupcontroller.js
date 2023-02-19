@@ -1,3 +1,4 @@
+
 import db from "../Models/index.js";
 
 
@@ -11,13 +12,19 @@ const Recent_activities=db.recent_activity;
 
 const getGroup=async(req,res)=>{
     try {
-        const user_id=req.body.user_id;
+       console.log("inside..get grp...")
         const grouplist= await Group.findAll({
             where:{
-                user_id:user_id
-            }
+                created_by:req.body.user_id
+            },
+            attributes: ['group_name','group_id'], 
         })
         console.log(grouplist)
+        res.json({
+            status:"200",
+            grouplist:grouplist,
+            message:"executed"
+        })
     } catch (error) {
         res.json({
             status:500,
@@ -29,7 +36,7 @@ const createGroup=async(req,res)=>{
     try {
     
         const user_ls=req.body.user_ls;
-        const created_by=req.body.cretaed_by;
+        const created_by=req.body.created_by;
     
 
       
@@ -39,32 +46,39 @@ const createGroup=async(req,res)=>{
             type:req.body.type,
             created_by:created_by
           })
-        
-       
-        user_ls.forEach(async(element) =>{
-           
-            const user= await User.findOne({
-                where:{
-                    email:element.email
-                },
-                attributes:['user_id']
-
-            })
-          
-        await  ConnectUG.create({
-            user_id:user,
+          await  ConnectUG.create({
+            user_id:created_by,
             group_id:newGroup.group_id
         })
+       
+        // user_ls.forEach(async(element) =>{
+           
+        //     const user= await User.findOne({
+        //         where:{
+        //             email:element.email
+        //         },
+        //         attributes:['user_id']
+
+        //     })
+          
+        // await  ConnectUG.create({
+        //     user_id:user,
+        //     group_id:newGroup.group_id
+        // })
             
-        await Recent_activities.create({
-            type:1,
-            name:req.body.group_name,
-            user_id:created_by,
+        // await Recent_activities.create({
+        //     type:1,
+        //     name:req.body.group_name,
+        //     user_id:created_by,
+        // })
+
+
+        // });
+        res.json({
+            status:"200",
+           
+            message:"created .....",
         })
-
-
-        });
-     
         
     } catch (error) {
         console.log(error.message);
